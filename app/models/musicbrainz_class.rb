@@ -30,6 +30,12 @@ class MusicbrainzClass
 		wrapper.artists(name: term, offset: page_to_25_offset(page), inc: { aliases: true }) rescue nil
 	end
 	
+	def self.cover_art(musicbrainz_id)
+		require 'open-uri'
+  	wrapper = Musicbrainz::Wrapper.new(:username => '')
+		wrapper.cover_art_archive_query(musicbrainz_id)
+	end
+	
 	# General
 	def self.page_to_25_offset(page)
   	if !page.blank?
