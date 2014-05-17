@@ -17,6 +17,8 @@ Otherapis::Application.routes.draw do
   get '/musicbrainz/tracks', to: 'musicbrainzs#tracks'
   get '/musicbrainz/artist/:id', to: 'musicbrainzs#artist'
   get '/musicbrainz/artists', to: 'musicbrainzs#artists'
+  get '/musicbrainz/work/:id', to: 'musicbrainzs#work'
+  get '/musicbrainz/works', to: 'musicbrainzs#works'
   get '/musicbrainz/cover_art/:id', to: 'musicbrainzs#cover_art'
   
   # Musicbrainz

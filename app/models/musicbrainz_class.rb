@@ -30,6 +30,16 @@ class MusicbrainzClass
 		wrapper.artists(name: term, offset: page_to_25_offset(page), inc: { aliases: true }) rescue nil
 	end
 	
+	def self.work_by_id(id)
+		wrapper = Musicbrainz::Wrapper.new(username: '')
+		wrapper.work(id: id, inc: { artist_rels: true }) rescue nil
+	end
+	
+	def self.works_search_by_title(term, page)
+		wrapper = Musicbrainz::Wrapper.new(username: '')
+		wrapper.works(work: term, offset: page_to_25_offset(page), inc: { artist_rels: true })
+	end
+	
 	def self.cover_art(musicbrainz_id)
 		require 'open-uri'
   	wrapper = Musicbrainz::Wrapper.new(:username => '')

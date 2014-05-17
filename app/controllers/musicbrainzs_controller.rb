@@ -24,6 +24,14 @@ class MusicbrainzsController < ApplicationController
 		render :json => MusicbrainzClass.artists_search_by_name(params[:term], params[:page])
 	end
 	
+	def work
+		render :json => MusicbrainzClass.work_by_id(params[:id])
+	end
+	
+	def works
+		render :json => MusicbrainzClass.works_search_by_title(params[:term], params[:page])
+	end
+	
 	def cover_art
 		render :json => MusicbrainzClass.cover_art(params[:id])
 	end
