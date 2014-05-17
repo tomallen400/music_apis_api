@@ -7,7 +7,7 @@ class MusicbrainzClass
 	
 	def self.products_search_by_title(term, page)
 		wrapper = Musicbrainz::Wrapper.new(username: '')
-		wrapper.releases(release: term, offset: page_to_25_offset(page).to_s, inc: { recordings: true, artists: true }) rescue nil
+		wrapper.releases(release: term, offset: page_to_25_offset(page), inc: { recordings: true, artists: true }) rescue nil
 	end
 	
 	def self.recording_by_id(id)
@@ -17,7 +17,7 @@ class MusicbrainzClass
 	
 	def self.recordings_search_by_title(term, page)
 		wrapper = Musicbrainz::Wrapper.new(username: '')
-		wrapper.recordings(recording: term, offset: page_to_25_offset(page).to_s, inc: { isrcs: true, artist_rels: true, artists: true, work_rels: true, releases: true }) rescue nil
+		wrapper.recordings(recording: term, offset: page_to_25_offset(page), inc: { isrcs: true, artist_rels: true, artists: true, work_rels: true, releases: true }) rescue nil
 	end
 	
 	def self.artist_by_id(id)
@@ -27,13 +27,13 @@ class MusicbrainzClass
 	
 	def self.artists_search_by_name(term, page)
 		wrapper = Musicbrainz::Wrapper.new(username: '')
-		wrapper.artists(name: term, offset: page_to_25_offset(page).to_s, inc: { aliases: true }) rescue nil
+		wrapper.artists(name: term, offset: page_to_25_offset(page), inc: { aliases: true }) rescue nil
 	end
 	
 	# General
 	def self.page_to_25_offset(page)
   	if !page.blank?
-  		(page - 1) * 25
+  		(page.to_i - 1) * 25
   	else
   		0
   	end
