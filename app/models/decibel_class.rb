@@ -10,6 +10,20 @@ class DecibelClass
 		wrapper.albums(:title => term, :pagenumber => set_page(page), :depth => {:identifiers => true, :recordings => true, :participations => true, :artistdetails => true}) rescue nil
 	end
 	
+	def self.products_search_by_params(params, page)
+		wrapper = Decibel::Wrapper.new(:decibel_app_id => ENV['DECIBEL_APP_ID'], :decibel_app_key => ENV['DECIBEL_API_KEY'])
+		wrapper.albums(product_params(params, page)) rescue nil
+	end
+	
+	def self.product_params(params, page)
+		value = {}
+		value[:title] = params[:title] if params[:title]
+		value[:artist] = params[:artist] if params[:artist]
+		value[:pagenumber] = set_page(page)
+		value[:depth] = {identifiers: true, recordings: true, participations: true, artistdetails: true}
+		value
+	end
+	
 	def self.track_by_id(id)
 		wrapper = Decibel::Wrapper.new(:decibel_app_id => ENV['DECIBEL_APP_ID'], :decibel_app_key => ENV['DECIBEL_API_KEY'])
   	wrapper.recording(:id => id, :depth => {:genres => true, :artistdetails => true, :participations => true, :works => true}) rescue nil

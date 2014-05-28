@@ -21,9 +21,11 @@ Otherapis::Application.routes.draw do
   get '/musicbrainz/works', to: 'musicbrainzs#works'
   get '/musicbrainz/cover_art/:id', to: 'musicbrainzs#cover_art'
   
-  # Musicbrainz
+  # Discogs
   get '/discogs/product/:id', to: 'discogs#product'
   get '/discogs/products', to: 'discogs#products'
+  get '/discogs/master/:id', to: 'discogs#master'
+  get '/discogs/masters', to: 'discogs#masters'
   get '/discogs/track/:id', to: 'discogs#track'
   get '/discogs/tracks', to: 'discogs#tracks'
   get '/discogs/artist/:id', to: 'discogs#artist'

@@ -5,7 +5,7 @@ class MusicbrainzsController < ApplicationController
 	end
 	
 	def products
-		render :json => MusicbrainzClass.products_search_by_title(params[:term], params[:page])
+		render :json => MusicbrainzClass.products_search_by_params(params, params[:page])
 	end
 	
 	def track

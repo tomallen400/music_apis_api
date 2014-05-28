@@ -44,3 +44,4 @@ end
 gem 'decibel_wrapper'
 gem 'discogs-wrapper'
 gem 'musicbrainz_wrapper'
+gem 'httparty'

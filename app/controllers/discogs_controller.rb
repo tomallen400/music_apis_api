@@ -5,7 +5,15 @@ class DiscogsController < ApplicationController
 	end
 	
 	def products
-		render :json => DiscogClass.products_search_by_title(params[:term], params[:page])
+		render :json => DiscogClass.products_search_by_params(params, params[:page])
+	end
+	
+	def master
+		render :json => DiscogClass.master_by_id(params[:id])
+	end
+	
+	def masters
+		render :json => DiscogClass.masters_search_by_params(params, params[:page])
 	end
 	
 	def track
