@@ -13,7 +13,7 @@ class MusicbrainzsController < ApplicationController
 	end
 	
 	def tracks
-		render :json => MusicbrainzClass.recordings_search_by_title(params[:term], params[:page])
+		render :json => MusicbrainzClass.recordings_search_by_params(params, params[:page])
 	end
 	
 	def artist
@@ -21,7 +21,7 @@ class MusicbrainzsController < ApplicationController
 	end
 	
 	def artists
-		render :json => MusicbrainzClass.artists_search_by_name(params[:term], params[:page])
+		render :json => MusicbrainzClass.artists_search_by_name(params[:name], params[:page])
 	end
 	
 	def work
@@ -29,7 +29,7 @@ class MusicbrainzsController < ApplicationController
 	end
 	
 	def works
-		render :json => MusicbrainzClass.works_search_by_title(params[:term], params[:page])
+		render :json => MusicbrainzClass.works_search_by_title(params[:title], params[:page])
 	end
 	
 	def cover_art

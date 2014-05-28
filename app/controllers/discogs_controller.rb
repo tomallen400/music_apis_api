@@ -25,7 +25,7 @@ class DiscogsController < ApplicationController
 	end
 	
 	def artists
-		render :json => DiscogClass.artists_search_by_name(params[:term], params[:page])
+		render :json => DiscogClass.artists_search_by_name(params[:name], params[:page])
 	end
 	
 end

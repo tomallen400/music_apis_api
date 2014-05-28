@@ -13,7 +13,7 @@ class DecibelsController < ApplicationController
 	end
 	
 	def tracks
-		render :json => DecibelClass.tracks_search_by_title(params[:term], params[:page])
+		render :json => DecibelClass.tracks_search_by_params(params, params[:page])
 	end
 	
 	def participant
@@ -29,7 +29,7 @@ class DecibelsController < ApplicationController
 	end
 	
 	def artists
-		render :json => DecibelClass.artists_search_by_name(params[:term], params[:page])
+		render :json => DecibelClass.artists_search_by_name(params[:name], params[:page])
 	end
 	
 end

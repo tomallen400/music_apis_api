@@ -36,6 +36,20 @@ class MusicbrainzClass
 		wrapper.recordings(recording: term, offset: page_to_25_offset(page), inc: { isrcs: true, artist_rels: true, artists: true, work_rels: true, releases: true }) rescue nil
 	end
 	
+	def self.recordings_search_by_params(params, page)
+		wrapper = Musicbrainz::Wrapper.new(username: '')
+		wrapper.recordings(recording_params(params, page)) rescue nil
+	end
+	
+	def self.recording_params(params, page)
+		value = {}
+		value[:recording] = params[:title] if params[:title]
+		value[:artist] = params[:artist] if params[:artist]
+		value[:offset] = page_to_25_offset(page)
+		value[:inc] = { isrcs: true, artist_rels: true, artists: true, work_rels: true, releases: true }
+		value
+	end
+	
 	def self.artist_by_id(id)
 		wrapper = Musicbrainz::Wrapper.new(username: '')
   	wrapper.artist(id: id, inc: { aliases: true }) rescue nil
