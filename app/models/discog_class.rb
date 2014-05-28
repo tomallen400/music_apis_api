@@ -46,6 +46,12 @@ class DiscogClass
 	
 	def self.masters_search_by_params(params, page)
 		result = send_request(ENV["DISCOGS"] + "database/search?type=master#{product_params(params, page)}")
+		result = JSON.parse(result)
+		if result && result["results"]
+			result["results"]
+		else
+			[]
+		end
 	end
 	
 	def self.track_by_product_id(id, index)
