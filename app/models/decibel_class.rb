@@ -12,13 +12,26 @@ class DecibelClass
 	
 	def self.products_search_by_params(params, page)
 		wrapper = Decibel::Wrapper.new(:decibel_app_id => ENV['DECIBEL_APP_ID'], :decibel_app_key => ENV['DECIBEL_API_KEY'])
-		wrapper.albums(product_params(params, page)) rescue nil
+		if params[:catno]
+			wrapper.album(id: params[:catno], idtype: "catalognumber", depth: { genres: true, identifiers: true, recordings: true, participations: true, artistdetails: true } ) rescue nil
+		elsif params[:barcode]
+			wrapper.album(id: params[:barcode], idtype: "ean", depth: { genres: true, identifiers: true, recordings: true, participations: true, artistdetails: true } ) rescue nil
+		else
+			wrapper.albums(product_params(params, page)) rescue nil
+		end
 	end
 	
 	def self.product_params(params, page)
 		value = {}
 		value[:title] = params[:title] if params[:title]
 		value[:artist] = params[:artist] if params[:artist]
+		if params[:catno]
+			value[:id] = params[:catno]
+			value[:idtype] = "catalognumber"
+		elsif params[:barcode]
+			value[:id] = params[:barcode]
+			value[:idtype] = "ean"
+		end
 		value[:pagenumber] = set_page(page)
 		value[:depth] = {identifiers: true, recordings: true, participations: true, artistdetails: true}
 		value
