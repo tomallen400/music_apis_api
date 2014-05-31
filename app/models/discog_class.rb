@@ -41,7 +41,7 @@ class DiscogClass
 	end
 	
 	def self.master_by_id(id)
-		send_query(ENV["DISCOGS"] + "masters/#{id}")
+		send_request(ENV["DISCOGS"] + "masters/#{id}")
 	end
 	
 	def self.masters_search_by_params(params, page)
@@ -60,7 +60,7 @@ class DiscogClass
 	end
 	
 	def self.artist_by_id(id)
-		send_query(ENV["DISCOGS"] + "masters/#{id}")
+		send_request(ENV["DISCOGS"] + "artist/#{id}")
 	end
 	
 	def self.artists_search_by_name(term, page)
