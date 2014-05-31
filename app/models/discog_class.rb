@@ -60,7 +60,7 @@ class DiscogClass
 	end
 	
 	def self.artist_by_id(id)
-		send_request(ENV["DISCOGS"] + "artist/#{id}")
+		send_request(ENV["DISCOGS"] + "artists/#{id}")
 	end
 	
 	def self.artists_search_by_name(term, page)
