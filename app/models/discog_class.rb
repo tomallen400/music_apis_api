@@ -60,13 +60,19 @@ class DiscogClass
 	end
 	
 	def self.artist_by_id(id)
-		wrapper = Discogs::Wrapper.new("Metable at the British Library")
-  	wrapper.get_artist(id) rescue nil
+		send_query(ENV["DISCOGS"] + "masters/#{id}")
 	end
 	
 	def self.artists_search_by_name(term, page)
-		wrapper = Discogs::Wrapper.new("Metable at the British Library")
-		wrapper.search(term, :type => "artist", :page => page) rescue nil
+		#wrapper = Discogs::Wrapper.new("Metable at the British Library")
+		#wrapper.search(term, :type => "artist", :page => page) rescue nil
+		result = send_request(ENV["DISCOGS"] + "database/search?type=artist#{product_params({title: term}, page)}")
+		result = JSON.parse(result)
+		if result && result["results"]
+			result["results"]
+		else
+			[]
+		end
 	end
 	
 	# General
