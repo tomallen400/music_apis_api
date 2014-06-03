@@ -17,11 +17,11 @@ class DecibelsController < ApplicationController
 	end
 	
 	def participant
-	render :json => DecibelClass.participant_by_id(params[:id])
+		render :json => DecibelClass.participant_by_id(params[:id])
 	end
 	
 	def participants
-	
+	render :json => DecibelClass.participants_search_by_name(params[:name], params[:page])
 	end
 	
 	def artist

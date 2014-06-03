@@ -72,8 +72,9 @@ class DecibelClass
   	wrapper.participant(:id => id, :depth => {:identifiers => true, :dates => true}) rescue nil
 	end
 	
-	def self.participants_search_by_name(term, page)
-		
+	def self.participants_search_by_name(name, page)
+		wrapper = Decibel::Wrapper.new(:decibel_app_id => ENV['DECIBEL_APP_ID'], :decibel_app_key => ENV['DECIBEL_API_KEY'])
+		wrapper.participants(:name => name, :pagenumber => set_page(page), :depth => { :dates => true, :identifiers => true, :members => true, :urls => true }) rescue nil
 	end
 	
 	def self.artist_by_id(id)
