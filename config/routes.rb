@@ -13,6 +13,8 @@ Otherapis::Application.routes.draw do
   # Musicbrainz
   get '/musicbrainz/product/:id', to: 'musicbrainzs#product'
   get '/musicbrainz/products', to: 'musicbrainzs#products'
+  get '/musicbrainz/release_group/:id', to: 'musicbrainzs#release_group'
+  get '/musicbrainz/release_groups', to: 'musicbrainzs#release_groups'
   get '/musicbrainz/track/:id', to: 'musicbrainzs#track'
   get '/musicbrainz/tracks', to: 'musicbrainzs#tracks'
   get '/musicbrainz/artist/:id', to: 'musicbrainzs#artist'
@@ -26,6 +28,8 @@ Otherapis::Application.routes.draw do
   get '/discogs/products', to: 'discogs#products'
   get '/discogs/master/:id', to: 'discogs#master'
   get '/discogs/masters', to: 'discogs#masters'
+  get '/discogs/release_group/:id', to: 'discogs#master'
+  get '/discogs/release_groups', to: 'discogs#masters'
   get '/discogs/track/:id', to: 'discogs#track'
   get '/discogs/tracks', to: 'discogs#tracks'
   get '/discogs/artist/:id', to: 'discogs#artist'

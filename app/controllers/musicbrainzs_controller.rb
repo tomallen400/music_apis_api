@@ -8,6 +8,14 @@ class MusicbrainzsController < ApplicationController
 		render :json => MusicbrainzClass.products_search_by_params(params, params[:page])
 	end
 	
+	def release_group
+		render :json => MusicbrainzClass.release_group_by_id(params[:id])
+	end
+	
+	def release_groups
+		render :json => MusicbrainzClass.release_group_search_by_params(params, params[:page])
+	end
+	
 	def track
 		render :json => MusicbrainzClass.recording_by_id(params[:id])
 	end
